@@ -8,18 +8,22 @@
  */
 
 global["defbodycreate"] = function(spawn, nametouse, role) {
-   Game.spawns[spawn].spawnCreep( [WORK, CARRY, MOVE], nametouse,{ memory: { role: role } } );
+    if(role == 'harvester' || role == 'upgrader') {
+        Game.spawns[spawn].spawnCreep( [WORK, WORK, WORK, CARRY, CARRY, MOVE, MOVE], nametouse,{ memory: { role: role } } );
+    }
+    else { 
+        Game.spawns[spawn].spawnCreep( [WORK, CARRY, MOVE], nametouse,{ memory: { role: role } } );
+    }
 }
 
 global["checkifexists"] = function(role, amount, spawn) {
     var harvesters = _.filter(Game.creeps, (creep) => creep.memory.role == role);
     console.log(role + 's: ' + harvesters.length);
-
+    
     if(harvesters.length < amount) {
         var newName = role + Game.time;
         console.log('Spawning new ' + role + ': ' + newName);
-        Game.spawns[spawn].spawnCreep([WORK,CARRY,MOVE], newName,
-            {memory: {role: role}});
+        defbodycreate(spawn, newName, role);
     }
 }
 
