@@ -4,10 +4,10 @@ var roleSoldier = {
 
     /** @param {Creep} creep **/
     run: function(creep) {
-        checkstatus('fight', creep);
+        checkenergy('fight', creep);
         var enemies = creep.room.find(Game.HOSTILE_CREEPS);
         if(creep.memory.acting) {
-            if(!enemies){
+            if(enemies.length){
                 if(creep.attack(enemies[0]) == ERR_NOT_IN_RANGE) {
                     creep.moveTo(enemies[0],{visualizePathStyle: {stroke: '#ff0000'}});
                 }
