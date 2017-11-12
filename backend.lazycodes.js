@@ -18,21 +18,16 @@ global["defbodycreate"] = function(spawn, nametouse, role) {
 }
 
 global["checkifexists"] = function(role, amount, spawn) {
-    var currRole = _.filter(Game.creeps, (creep) => creep.memory.role == role);
-    console.log(role + 's: ' + currRole.length);
-
-    if(currRole.length < amount) {
-        var newName = role + Game.time;
-        console.log('Spawning new ' + role + ': ' + newName);
-        defbodycreate("Spawn1", newName, role)
-    }
+    var newName = role + Game.time;
+    console.log('Spawning new ' + role + ': ' + newName);
+    defbodycreate("Spawn1", newName, role);
 }
 
 global["checkspawnstatus"] = function(spawn) {
     if(Game.spawns[spawn].spawning) {
         var spawningCreep = Game.creeps[Game.spawns[spawn].spawning.name];
         Game.spawns['Spawn1'].room.visual.text(
-            '🛠️' + spawningCreep.memory.role,
+            spawningCreep.memory.role,
             Game.spawns[spawn].pos.x + 1,
             Game.spawns[spawn].pos.y,
             {align: 'left', opacity: 0.8});
