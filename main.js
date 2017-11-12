@@ -2,6 +2,7 @@ var roleHarvester = require('role.harvester');
 var roleUpgrader = require('role.upgrader');
 var roleBuilder = require('role.builder');
 var roleRepairman = require('role.repairman');
+var roleSoldier = require('role.soldier');
 require('backend.lazycodes');
 module.exports.loop = function () {
 
@@ -16,6 +17,7 @@ module.exports.loop = function () {
     checkifexists('harvester', 3, 'Spawn1')
     checkifexists('upgrader', 5, 'Spawn1')
     checkifexists('repairman', 3, 'Spawn1')
+    checkifexists('soldier', 3, 'Spawn1')
     
     checkspawnstatus("Spawn1")
     
@@ -32,6 +34,9 @@ module.exports.loop = function () {
         }
         if(creep.memory.role == 'repairman') {
             roleRepairman.run(creep);
+        }
+        if(creep.memory.role == 'soldier') {
+            roleSoldier.run(creep);
         }
     }
 }
