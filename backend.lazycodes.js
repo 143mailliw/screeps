@@ -47,10 +47,18 @@ global["checkenergy"] = function(actionname, creep) {
 
 global["harvest"] = function(creep) {
     var sources = creep.room.find(FIND_SOURCES);
-    if(creep.harvest(sources[0]) == ERR_NOT_IN_RANGE) {
-        creep.moveTo(sources[0], {visualizePathStyle: {stroke: '#ffaa00'}});
+    if(creep.memory.harvestnode == null) {
+        creep.memory.harvestnode = randomint(0, sources.length - 1);
+    }
+    if(creep.harvest(sources[creep.memory.harvestnode]) == ERR_NOT_IN_RANGE) {
+        creep.moveTo(sources[creep.memory.harvestnode], {visualizePathStyle: {stroke: '#ffaa00'}});
     }
 }
+
+global["randomint"] = function(min, max) {
+    return Math.floor(Math.random() * (max - min + 1)) + min;
+}
+
 
 
 module.exports = {
