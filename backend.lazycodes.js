@@ -34,6 +34,25 @@ global["checkspawnstatus"] = function(spawn) {
     }
 }
 
+global["checkenergy"] = function(actionname, creep) {
+    if(creep.memory.acting && creep.carry.energy == 0) {
+        creep.memory.acting = false
+        creep.say('harvest');
+    }
+    if(!creep.memory.acting && creep.carry.energy == creep.carryCapacity) {
+        creep.memory.acting = true
+        creep.say(actionname);
+    }
+}
+
+global["harvest"] = function(creep) {
+    var sources = creep.room.find(FIND_SOURCES);
+    if(creep.harvest(sources[0]) == ERR_NOT_IN_RANGE) {
+        creep.moveTo(sources[0], {visualizePathStyle: {stroke: '#ffaa00'}});
+    }
+}
+
+
 module.exports = {
 
 };

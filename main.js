@@ -17,6 +17,7 @@ module.exports.loop = function () {
     checkifexists('upgrader', 5, 'Spawn1')
     checkifexists('repairman', 3, 'Spawn1')
     
+    checkspawnstatus("Spawn1")
     
     for(var name in Game.creeps) {
         var creep = Game.creeps[name];
