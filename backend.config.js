@@ -1,17 +1,17 @@
 //Global Settings
-global["spawnmethod"] = 0; //0 for william341's method 1 for Derpy's method
+global["spawnmethod"] = 1; //0 for william341's method 1 for Derpy's method
 global["typesenabled"] =
   {
     "builder":true,
     "harvester":true,
     "upgrader":true,
     "repairman":true,
-    "soldier":true
+    "soldier":false
   };
 global["bodies"] =
   {
     "builder":[WORK, CARRY, MOVE],
-    "harvester":[WORK, CARRY, MOVE],
+    "harvester":[WORK, CARRY, MOVE, MOVE],
     "upgrader":[WORK, CARRY, MOVE],
     "repairman":[WORK, CARRY, MOVE],
     "soldier":[WORK, CARRY, MOVE, ATTACK, ATTACK]
