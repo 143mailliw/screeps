@@ -28,7 +28,7 @@ module.exports.loop = function () {
     for(var name in Game.creeps) {
         var creep = Game.creeps[name];
         if(randomint(0,1000)==10 && autoroad == true){
-            Game.room.createConstructionSite(creep.pos.x, creep.pos.y, STRUCTURE_ROAD);
+            creep.room.createConstructionSite(creep.pos.x, creep.pos.y, STRUCTURE_ROAD);
             
         }
         if(creep.memory.role == 'harvester') {
