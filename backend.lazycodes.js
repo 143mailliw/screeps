@@ -13,9 +13,14 @@ global["defbodycreate"] = function(spawn, nametouse, role) {
 }
 
 global["checkifexists"] = function(role, amount, spawn) {
-    var newName = role + Game.time;
-    console.log('Spawning new ' + role + ': ' + newName);
-    defbodycreate("Spawn1", newName, role);
+    var screeps = _.filter(Game.creeps, (creep) => creep.memory.role == role);
+    console.log(role + 's: ' + screeps.length);
+    
+    if(screeps.length < amount) {
+        var newName = role + Game.time;
+        console.log('Spawning new ' + role + ': ' + newName);
+        defbodycreate(spawn, newName, role);
+    }
 }
 
 global["checkspawnstatus"] = function(spawn) {
