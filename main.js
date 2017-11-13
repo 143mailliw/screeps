@@ -3,6 +3,7 @@ var roleUpgrader = require('role.upgrader');
 var roleBuilder = require('role.builder');
 var roleRepairman = require('role.repairman');
 var roleSoldier = require('role.soldier');
+var roleHealer = require('role.healer');
 require('backend.lazycodes');
 require('backend.config');
 module.exports.loop = function () {
@@ -45,6 +46,9 @@ module.exports.loop = function () {
         }
         if(creep.memory.role == 'soldier') {
             roleSoldier.run(creep);
+        }
+        if(creep.memory.role == 'healer') {
+            roleHealer.run(creep);
         }
     }
 }

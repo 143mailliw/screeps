@@ -1,12 +1,13 @@
 //Global Settings
-global["spawnmethod"] = 1; //0 for william341's method 1 for Derpy's method
+global["spawnmethod"] = 0; //0 for william341's method 1 for Derpy's method
 global["typesenabled"] =
   {
     "builder":true,
     "harvester":true,
     "upgrader":true,
     "repairman":true,
-    "soldier":true
+    "soldier":true,
+    "healer":true
   };
 global["bodies"] =
   {
@@ -14,7 +15,8 @@ global["bodies"] =
     "harvester":[WORK, CARRY, MOVE],
     "upgrader":[WORK, CARRY, MOVE],
     "repairman":[WORK, CARRY, MOVE],
-    "soldier":[WORK, CARRY, MOVE, ATTACK, ATTACK]
+    "soldier":[WORK, CARRY, MOVE, ATTACK, ATTACK],
+    "healer":[WORK, CARRY, MOVE]
   };
 global["autoroad"] = true;
 
@@ -25,7 +27,8 @@ global["method0_amounts"] =
     "harvester":5,
     "upgrader":5,
     "repairman":3,
-    "soldier":3
+    "soldier":3,
+    "healer":3
   };
 global["method0_statusmessages"] = true;
 
