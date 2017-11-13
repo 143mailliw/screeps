@@ -6,16 +6,17 @@ global["typesenabled"] =
     "harvester":true,
     "upgrader":true,
     "repairman":true,
-    "soldier":false
+    "soldier":true
   };
 global["bodies"] =
   {
     "builder":[WORK, CARRY, MOVE],
-    "harvester":[WORK, CARRY, MOVE, MOVE],
+    "harvester":[WORK, CARRY, MOVE],
     "upgrader":[WORK, CARRY, MOVE],
     "repairman":[WORK, CARRY, MOVE],
     "soldier":[WORK, CARRY, MOVE, ATTACK, ATTACK]
   };
+global["autoroad"] = true;
 
 //william341 method settings
 global["method0_amounts"] =
