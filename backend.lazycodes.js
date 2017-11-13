@@ -11,7 +11,7 @@ global["defbodycreate"] = function(spawn, nametouse, role) {
     if(role == 'soldier'){
         Game.spawns[spawn].spawnCreep( [WORK, CARRY, MOVE, ATTACK, ATTACK], nametouse,{ memory: { role: role } } );
     }else if(role == 'harvester'){
-        Game.spawns[spawn].spawnCreep( [WORK, WORK, CARRY, MOVE, MOVE], nametouse,{ memory: { role: role } } );
+        Game.spawns[spawn].spawnCreep( [WORK, CARRY, MOVE], nametouse,{ memory: { role: role } } );
     }else{
         Game.spawns[spawn].spawnCreep( [WORK, CARRY, MOVE], nametouse,{ memory: { role: role } } );
     }
