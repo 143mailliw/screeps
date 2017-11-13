@@ -19,6 +19,7 @@ global["bodies"] =
     "healer":[WORK, CARRY, MOVE]
   };
 global["autoroad"] = true;
+global["autosafemode"] = true;
 
 //william341 method settings
 global["method0_amounts"] =

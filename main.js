@@ -8,30 +8,35 @@ require('backend.lazycodes');
 require('backend.config');
 module.exports.loop = function () {
 
-  for(var name in Memory.creeps) {
-      if(!Game.creeps[name]) {
-          delete Memory.creeps[name];
-          console.log('Clearing non-existing creep memory:', name);
-      }
+    for(var name in Memory.creeps) {
+        if(!Game.creeps[name]) {
+            delete Memory.creeps[name];
+            console.log('Clearing non-existing creep memory:', name);
+        }
+    }
 
-  }
-
-  if(spawnmethod == 0) {
-    method0_spawn();
-  }
-  else if(spawnmethod == 1) {
-    method1_spawn();
-  }
-  else {
-    method0_spawn();
-  }
+    if(spawnmethod == 0) {
+        method0_spawn();
+    }
+    else if(spawnmethod == 1) {
+        method1_spawn();
+    }
+    else {
+        method0_spawn();
+    }
 
     for(var name in Game.creeps) {
         var creep = Game.creeps[name];
         if(randomint(0,1000)==10 && autoroad == true){
             creep.room.createConstructionSite(creep.pos.x, creep.pos.y, STRUCTURE_ROAD);
-            
         }
+        if(autosafemode==true) {
+            var hostiles = creep.room.find(FIND_HOSTILE_CREEPS);
+            if (hostiles.length > 0) {
+                creep.room.controller.activateSafeMode();
+            }
+        }
+        
         if(creep.memory.role == 'harvester') {
             roleHarvester.run(creep);
         }
