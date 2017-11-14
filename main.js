@@ -32,7 +32,7 @@ module.exports.loop = function () {
         }
         if(autosafemode==true) {
             var hostiles = creep.room.find(FIND_HOSTILE_CREEPS);
-            if (hostiles.length > 0) {
+            if (hostiles.lengths > 0) {
                 creep.room.controller.activateSafeMode();
             }
         }
@@ -56,4 +56,6 @@ module.exports.loop = function () {
             roleHealer.run(creep);
         }
     }
+    if(showstatus)
+        statusmsg(Game.spawns["Spawn1"].room);
 }

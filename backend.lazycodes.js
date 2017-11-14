@@ -34,13 +34,21 @@ global["checkspawnstatus"] = function(spawn) {
     }
 }
 
+global["statusmsg"] = function(roomtouse) {
+    roomtouse.visual.text("Room Owner: " + roomtouse.controller.owner.username, 0, 0.5, {align: 'left', opacity: 0.8});
+    roomtouse.visual.text("Creeps: " + roomtouse.find(FIND_CREEPS).length, 0, 1.5, {align: 'left', opacity: 0.8});
+    roomtouse.visual.text("Controller Level: " + roomtouse.controller.level, 0, 2.5, {align: 'left', opacity: 0.8});
+    roomtouse.visual.text("Controller Progress: " + roomtouse.controller.progress + "/" + roomtouse.controller.progressTotal, 0, 3.5, {align: 'left', opacity: 0.8});
+    roomtouse.visual.text("Safemode Left: " + roomtouse.controller.safeMode, 0, 4.5, {align: 'left', opacity: 0.8});
+} 
+
 global["checkenergy"] = function(actionname, creep) {
     if(creep.memory.acting && creep.carry.energy == 0) {
         creep.memory.acting = false
         creep.say('harvest');
     }
     if(!creep.memory.acting && creep.carry.energy == creep.carryCapacity) {
-        creep.memory.acting = true
+        creep.memory.acting = true 
         creep.say(actionname);
     }
 }
